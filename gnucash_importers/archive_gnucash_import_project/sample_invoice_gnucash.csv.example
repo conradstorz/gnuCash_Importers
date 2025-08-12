@@ -1,0 +1,48 @@
+1204;1/12/2018;000002;PO 210220;Special delivery;12/12/2018;Pride and Prejudice;pc;Books;1;30.00;;;;X;;A1;1/12/2018;1/1/2019;Accounts Payable;;X
+1204;1/12/2018;000002;PO 210220;Special delivery;12/12/2018;Electronic principles;pc;Books;1;50.00;;;;X;;A1;1/12/2018;1/1/2019;Accounts Payable;;X
+1205;1/12/2018;000004;PO 21099;;12/12/2018;Ultimate Guide;pc;Books;1;10.01;;;;;;;;;;;
+1205;1/12/2018;000004;PO 21099;;12/12/2018;Dinner & drinks;pc;Dining;1;10.01;;;;;;;;;;;
+1205;1/12/2018;000004;PO 21099;;12/12/2018;UG course;pc;Education;1;10.01;;;;;;;;;;;
+				
+""" This is as close as i have gotten to a bill import file for gnucash. 
+
+"When importing bills into GnuCash using a CSV file, the expected fields and their sequence are as follows:
+
+Field Name	Required	Description
+id	Yes	Invoice (Bill) ID. If blank in the first row, that invoice will not be imported.
+date_opened	No	Opening date for the bill (matches Preferences date format), defaults to today if blank/invalid.
+owner_id	Yes	Vendor number. Must be present in the first data row for each bill and must exist in vendor master.
+billingid	No	Billing ID. Optional.
+notes	No	Bill notes. Optional.
+date	No	Entry date. Defaults to date_opened if blank/invalid.
+desc	No	Description for the entry. Optional.
+action	No	Action. Optional.
+account	Yes	Account for the entry. Must exist. Mandatory for every row.
+quantity	No	Quantity, defaults to 1 if blank.
+price	Yes	Price for the entry. Required.
+disc_type	No	Discount type. Optional. Not relevant for bills.
+disc_how	No	Discount how. Optional. Not relevant for bills.
+discount	No	Discount amount or percent. Optional. Not relevant for bills.
+taxable	No	Is this entry taxable? Use “Y” or “X” for yes, “N” or blank for no.
+taxincluded	No	Is tax included in price? Use “Y” or “X” for yes, “N” or blank for no.
+tax_table	No	Tax table. Optional. Blank if not found.
+date_posted	No	Date bill was posted (if applicable), matches Preferences date format.
+due_date	No	Due date. Defaults to date posted if blank. Only relevant in first row if posting bill.
+account_posted	No	Post to account for vendor. Mandatory in first row if posting bill; must be Accounts Payable type account.
+memo_posted	No	Posting memo. Optional. Only relevant in first row of a posted bill.
+accu_splits	No	Accumulate splits? “Y” or “X” for yes, “N” or blank for no. Only in first row of a posted bill.
+Notes:
+
+Rows correspond to individual bill entries; all fields must be present in each row (placeholder empty fields accepted).
+
+Fields not applicable to bills (like discounts and some tax fields) can be left blank.
+
+Columns must appear in this exact order and with this number of fields, even if many are left empty.
+
+The owner_id must correspond to an existing vendor in your GnuCash data, and the account must exist.
+
+Example minimal bill entry row:
+
+text
+1204,1/12/2018,2001,PO 210220,Special delivery,1/12/2018,Books,pc,Books,1,30.00,,,,N,N,,1/12/2018,1/1/2019,Accounts Payable,posting memo,X
+"""
